@@ -37,7 +37,7 @@ from lightmano.managers.k8smanager.k8s_yaml_handler import handle_yaml
 from lightmano.core.service import EService
 
 
-DEFAULT_KUBECONFIG = 'k8s/lightmano.kubeconfig'#None
+DEFAULT_KUBECONFIG = None
 
 
 class K8sManager(EService):
