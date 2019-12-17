@@ -33,9 +33,10 @@ class VNFInstancesHandler(apimanager.APIHandler):
     def get(self, tenant, vnf_uuid=None):
 
         if vnf_uuid:
-            return self.service.vnfs[vnf_uuid]
+            return self.service.vnfs[vnf_uuid].to_dict()
 
-        return [vnf for vnf in self.service.vnfs if vnf.tenant == tenant]
+        return [vnf.to_dict() for vnf in self.service.vnfs.values()
+                if vnf.tenant == tenant]
 
     @apimanager.validate(returncode=201, min_args=1, max_args=2)
     def post(self, tenant, vnf_uuid_str=None, **request_data):

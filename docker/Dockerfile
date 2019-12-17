@@ -6,11 +6,11 @@ MAINTAINER Roberto Riggio <rriggio@fbk.eu>
 
 # Installing python dependencies
 RUN apt update
-RUN apt -y install python3-pip wget unzip iptables
-RUN pip3 install tornado==6.0.3 pymodm==0.4.1 influxdb==5.2.3 python-iptables==0.14.0
+RUN apt -y install python3-pip wget unzip
+RUN pip3 install tornado==6.0.3 pymodm==0.4.1 influxdb==5.2.3 kubernetes==10.0.1
 
 # Fetching the latest repository from lightmano.
-RUN wget https://github.com/lightmano/lightmano-runtime/archive/master.zip
+RUN wget https://github.com/joncnet/lightmano-runtime/archive/master.zip
 RUN unzip master.zip
 RUN rm master.zip
 RUN ln -sf /lightmano-runtime-master/conf/ /etc/lightmano
