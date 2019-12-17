@@ -35,7 +35,8 @@ class VNF:
     def get_k8s_desc_file(self):
 
         if not self._desc_file:
-            desc_file = open("k8s/vnf_manifests/%s.yaml" % self.vnf_manifest)
+            desc_file = open("/etc/lightmano/k8s/vnf_manifests/%s.yaml"
+                             % self.vnf_manifest)
             desc = desc_file.read()
             desc_file.close()
             for param_name, param_value in \

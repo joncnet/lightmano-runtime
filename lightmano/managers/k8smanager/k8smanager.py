@@ -73,7 +73,7 @@ class K8sManager(EService):
 
         tenant = params["tenant"]
         if tenant not in namespaces:
-            ns_file = open("k8s/_internal/namespace.yaml")
+            ns_file = open("/etc/lightmano/k8s/_internal/namespace.yaml")
             ns = ns_file.read()
             ns_file.close()
             ns = ns.replace("-NAME-", tenant)
@@ -82,13 +82,13 @@ class K8sManager(EService):
 
             rbac_api = RbacAuthorizationV1Api()
 
-            role_file = open("k8s/_internal/ns_role.yaml")
+            role_file = open("/etc/lightmano/k8s/_internal/ns_role.yaml")
             role = role_file.read()
             role_file.close()
             role = yaml.safe_load(role)
             rbac_api.create_namespaced_role(namespace=tenant, body=role)
 
-            rolebind_file = open("k8s/_internal/ns_role_binding.yaml")
+            rolebind_file = open("/etc/lightmano/k8s/_internal/ns_role_binding.yaml")
             rolebinding = rolebind_file.read()
             rolebind_file.close()
             rolebinding = yaml.safe_load(rolebinding)
